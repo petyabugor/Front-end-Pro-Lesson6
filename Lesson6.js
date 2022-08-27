@@ -61,22 +61,25 @@ function makeCounter() {
     function counter()  {
         return ++count;
     }
-    counter.reset = function (value = 0) {
-        count = value;
+    counter.currentValue = function(){
         return count;
     }
-    return counter;
+    counter.set = function(value){
+        return count=value;
+    }
+    return counter
 }
 
-let counter = makeCounter();
+let countModule = makeCounter();
 
-console.log(counter());
-console.log(counter());
-console.log(counter.reset(7));
-console.log(counter());
-console.log(counter());
-
-
-
+console.log(countModule());
+console.log(countModule());
+console.log(countModule());
+console.log(countModule.currentValue());
+console.log(countModule.set(5));
+console.log(countModule.currentValue());
+console.log(countModule());
+console.log(countModule());
+console.log(countModule.currentValue());
 
 
